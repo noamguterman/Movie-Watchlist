@@ -64,7 +64,7 @@ async function fetchWatchlistMovies(watchlistArray: string[], moviesDiv: HTMLEle
                                 <span class="runtime">${Runtime}</span>
                                 <span class="genre">${Genre}</span>
                                 <div class="wishlist-container">
-                                    <img class="add-icon" src="${RemoveIcon}" alt="Remove icon">
+                                    <img class="add-icon" src="${RemoveIcon}" alt="Remove icon" data-imdb-id="${imdbID}">
                                     <button class="btn-add" data-imdb-id="${imdbID}">Remove</button>
                                 </div>
                             </div>
@@ -114,7 +114,7 @@ async function fetchFullMovieDetails(imdbID: string): Promise<WatchlistMovie | n
 }
 
 function attachRemoveWatchlistListeners() {
-    const buttons = document.querySelectorAll('.btn-add')
+    const buttons = document.querySelectorAll('.btn-add, .add-icon')
     
     buttons.forEach((button) => {
         const imdbID = button.getAttribute('data-imdb-id')

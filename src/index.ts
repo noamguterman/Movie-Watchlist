@@ -85,7 +85,7 @@ async function getMovies() {
                                     <span class="runtime">${Runtime}</span>
                                     <span class="genre">${Genre}</span>
                                     <div class="wishlist-container">
-                                        <img class="add-icon" src="${buttonIcon}" alt="Add icon">
+                                        <img class="add-icon" src="${buttonIcon}" alt="Add/Remove icon" data-imdb-id="${movie.imdbID}">
                                         <button class="btn-add" data-imdb-id="${movie.imdbID}">${buttonText}</button>
                                     </div>
                                 </div>
@@ -145,7 +145,7 @@ async function fetchJson(url: string): Promise<any> {
 
 // Add eventListeners to all btn-add buttons
 function attachWatchlistListeners() {
-    const buttons = document.querySelectorAll('.btn-add') as NodeListOf<HTMLButtonElement>;
+    const buttons = document.querySelectorAll('.btn-add, .add-icon') as NodeListOf<HTMLButtonElement>;
     buttons.forEach((button) => {
         const imdbID = button.getAttribute('data-imdb-id');
         
